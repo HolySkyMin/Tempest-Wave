@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 9830f9911ebf1d941a34e68e55524780
+timeCreated: 1506697593
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: AMDRTG
+  fontNames:
+  - AMDRTG
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

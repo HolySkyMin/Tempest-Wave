@@ -1,0 +1,14 @@
+===== basic information =====
+#title Chaoz Impact
+#artist ParagonX9
+#playtime 01:56
+=============================
+===== additional information =====
+
+==================================
+===== notemap information =====
+#mobile
+#easy 6
+#normal 18
+#hard 24
+===============================
