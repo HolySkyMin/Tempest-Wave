@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 2.1.00
+  bundleVersion: 2.1.10
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -158,9 +158,9 @@ PlayerSettings:
     iOS: com.NoMansLand.TempestWave
   buildNumber:
     iOS: 3
-  AndroidBundleVersionCode: 110
+  AndroidBundleVersionCode: 113
   AndroidMinSdkVersion: 16
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 28
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -239,6 +239,7 @@ PlayerSettings:
   tvOSManualSigningProvisioningProfileType: 0
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0
+  iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
@@ -246,8 +247,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 7
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/82102/Desktop/AndroidKey/kyhsgeekcode.jks
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/USER-PC/Documents/Keystores/user.keystore
+  AndroidKeyaliasName: key_tempest
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -264,7 +265,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 167ef544e370f1e409611f927c6c261d, type: 3}
+      m_Icon: {fileID: 2800000, guid: deac8c08ac3cf224aaee6441f792a7d0, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

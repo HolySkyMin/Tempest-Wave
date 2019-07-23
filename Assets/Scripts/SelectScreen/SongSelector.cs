@@ -19,7 +19,7 @@ namespace TempestWave.SelectScreen
         private readonly string[] LevelText = { "easy", "normal", "hard", "apex" };
 
         private string selectedSong, selectedFolder, tpath, BGAPath, BackPath;
-        private int CurrentIndex = 0, LevelIndex = 0, CurBGAVal;
+        private int CurrentIndex = 0, LevelIndex = 0, CurBGAVal, lastButtonIdx = -1;
         private float curScrollVal = 1;
         private bool
             autoPlay = false,
@@ -92,6 +92,7 @@ namespace TempestWave.SelectScreen
         public void SearchLoad(Text searchText)
         {
             string value = searchText.text;
+            lastButtonIdx = -1;
 
             if (buttons.Count > 0)
             {
@@ -124,6 +125,7 @@ namespace TempestWave.SelectScreen
                 SongButton realBtn = go.GetComponent<SongButton>();
                 chk = realBtn.SetSongName(dat, source.FullName + dat, value);
                 //chk = realBtn.SetSong(dat, source.FullName + dat, value);                // 이거를 버튼 눌렀을 때로도 뺀다.
+                realBtn.Index = buttons.Count;
 
                 if (chk.Equals(1)) { go.SetActive(false); continue; }
                     else if (chk.Equals(-1))
@@ -147,7 +149,7 @@ namespace TempestWave.SelectScreen
             }
         }
 
-        public void Selected(string title, List<BeatmapInfo>[] St5, List<BeatmapInfo>[] Th2, List<BeatmapInfo>[] Th4, List<BeatmapInfo>[] Th6, List<BeatmapInfo>[] Pt1, bool[] filled, int bgaFrame, string bgaPath, string backPath)
+        public void Selected(int index, string title, List<BeatmapInfo>[] St5, List<BeatmapInfo>[] Th2, List<BeatmapInfo>[] Th4, List<BeatmapInfo>[] Th6, List<BeatmapInfo>[] Pt1, bool[] filled, int bgaFrame, string bgaPath, string backPath)
         {
             Starlight5 = St5;
             Theater2 = Th2;
@@ -186,6 +188,13 @@ namespace TempestWave.SelectScreen
             }
             LevelSelectedPrevious = false;
             if (BeatmapIndexPanel.activeSelf) { BeatmapIndexPanel.SetActive(false); }
+
+            if(lastButtonIdx != -1)
+            {
+                buttons[lastButtonIdx].GetComponent<Graphic>().color = GlobalTheme.ThemeColor();
+                buttons[lastButtonIdx].GetComponent<SongButton>().buttonText.color = GlobalTheme.ThemeContrastColor();
+            }
+            lastButtonIdx = index;
         }
 
         public void ModeClicked(int index)

@@ -20,6 +20,7 @@ namespace TempestWave.SelectScreen
         private List<string> Tag = new List<string>();
         private int bgaframe = 0;
         private string wavPath = "", mp3Path = "", oggPath = "", bgaPath = "", jacketPath = "", backPath = "";
+        public int Index;
         public Text buttonText;
         public Button startButton;
         public SongSelector selector;
@@ -69,10 +70,10 @@ namespace TempestWave.SelectScreen
                 {
                     breakFlag = true;
                 }
-                if (files[i].Extension.Equals(".wav")) { wavPath = files[i].FullName; }
-                else if (files[i].Extension.Equals(".mp3")) { mp3Path = files[i].FullName; }
-                else if (files[i].Extension.Equals(".ogg")) { oggPath = files[i].FullName; }
-                else if (files[i].Extension.Equals(".mp4")) { bgaPath = files[i].FullName; }
+                if (files[i].Extension.ToUpper().Equals(".WAV")) { wavPath = files[i].FullName; }
+                else if (files[i].Extension.ToUpper().Equals(".MP3")) { mp3Path = files[i].FullName; }
+                else if (files[i].Extension.ToUpper().Equals(".OGG")) { oggPath = files[i].FullName; }
+                else if (files[i].Extension.ToUpper().Equals(".MP4")) { bgaPath = files[i].FullName; }
                 else if (files[i].Name.ToUpper().Equals("JACKET.JPG") || files[i].Name.ToUpper().Equals("JACKET.PNG")) { jacketPath = files[i].FullName; }
                 else if (files[i].Name.ToUpper().Equals("BACKGROUND.JPG") || files[i].Name.ToUpper().Equals("BACKGROUND.PNG")) { backPath = files[i].FullName; }
             }
@@ -86,7 +87,7 @@ namespace TempestWave.SelectScreen
                     else if (files[i].Extension.Equals(".tw2")) { ReadTWxMetadata(files[i].FullName, 1, ref hasError); }
                     else if (files[i].Extension.Equals(".tw4")) { ReadTWxMetadata(files[i].FullName, 2, ref hasError); }
                     else if (files[i].Extension.Equals(".txt")) { ReadDelesteMetadata(files[i].FullName, ref hasError); }
-                    else if (files[i].Extension.Equals(".json")) { ReadSSTrainMetadata(files[i].FullName, ref hasError); }
+                    else if (files[i].Extension.ToUpper().Equals(".JSON")) { ReadSSTrainMetadata(files[i].FullName, ref hasError); }
                     else if (files[i].Extension.Equals(".tw5")) { ReadTWxMetadata(files[i].FullName, 0, ref hasError); }
                     else if (files[i].Extension.Equals(".tw6")) { ReadTWxMetadata(files[i].FullName, 3, ref hasError); }
                 }
@@ -306,7 +307,9 @@ namespace TempestWave.SelectScreen
         {
             if (!loaded)
                 SetSong(_title, _path, _searchKey);
-            selector.Selected(buttonText.text, Starlight5, Theater2, Theater4, Theater6, Platinum1, Filled, bgaframe, bgaPath, backPath);
+            selector.Selected(Index, buttonText.text, Starlight5, Theater2, Theater4, Theater6, Platinum1, Filled, bgaframe, bgaPath, backPath);
+            gameObject.GetComponent<Graphic>().color = Core.UI.GlobalTheme.ThemeContrastColor();
+            buttonText.color = Core.UI.GlobalTheme.ThemeColor();
             selector.LoadJacket(jacketPath);
         }
     }
