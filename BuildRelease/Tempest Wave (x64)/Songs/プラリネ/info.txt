@@ -1,0 +1,11 @@
+﻿===== basic information =====
+#title プラリネ
+#artist Julia
+=============================
+==== beatmap information ====
+#normal deleste=23:Spread_Notes
+#hard deleste=28:Spread_Notes
+=============================
+============Tags=============
+#tag Spread Notes
+=============================

@@ -1,0 +1,16 @@
+﻿// BETA changelog of 2.0.7
+
+This update is focusing for updated visual of THEATER mode game.
+
+
+/ beta 2 (release date: 18.04.15)
+
+= Remade the note falling formula of THEATER mode. This time it is lot similar to the original.
+= Fixed a problem that touch position didn't work well in less than 16:9 aspect.
+
+/ beta 1 (release date: 18.04.14)
+
+= Remade the note falling formula of THEATER mode.
+= Applied improved mesh visual in THEATER mode.
+= Modified the judging standard of THEATER mode.
+= Fixed a problem that with keyboard, hold note wasn't able to be hold.

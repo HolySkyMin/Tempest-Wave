@@ -1,0 +1,25 @@
+﻿// BETA changelog of 2.1.0
+
+
+/ 2.1.0b2 (release date: 18.06.29)
+
++ Added 6 themes.
++ Added an achievement about PLATINUM game mode.
+= Adjusted the judging criteria for PLATINUM game mode.
+= Revised the order of dividing line in Creator.
+= Fixed a problem on the selection screen that list was sometimes not been sorted.
+  = Program sorts the list at first, so sort order can be different from before.
+= Fixed a problem on the Creator that note sound was been played at the wrong time occasionally.
+
+/ 2.1.0b1 (release date: 18.06.21)
+
++ Updated Unity to 2018.1.
+  + Applied .NET 4.x scripting runtime.
+  + Applied IL2CPP and 64-bit support for Android version.
++ Added PLATINUM game mode.
+  + 1L PLATINUM mode is available now.
+  + Following this, in Creator, you can create beatmap for 1 line (tw1).
+  = PLATINUM game mode is still under developing. So it is not perfect now.
++ Added Theme changing feature.
+  + Currently, there are 5 themes.
+  = More themes will be added in future update.
