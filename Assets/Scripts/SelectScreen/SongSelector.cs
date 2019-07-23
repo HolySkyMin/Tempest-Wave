@@ -122,13 +122,16 @@ namespace TempestWave.SelectScreen
                 GameObject go = Instantiate(listButton) as GameObject;
                 go.SetActive(true);
                 SongButton realBtn = go.GetComponent<SongButton>();
-                chk = realBtn.SetSong(dat, source.FullName + dat, value);
+                chk = realBtn.SetSongName(dat, source.FullName + dat, value);
+                //chk = realBtn.SetSong(dat, source.FullName + dat, value);                // 이거를 버튼 눌렀을 때로도 뺀다.
+
                 if (chk.Equals(1)) { go.SetActive(false); continue; }
-                else if (chk.Equals(-1))
-                {
-                    if (!ErrorInfo.activeSelf) { ErrorInfo.SetActive(true); }
-                    ErrorDirList.Add(dat);
-                }
+                    else if (chk.Equals(-1))
+                    {
+                        if (!ErrorInfo.activeSelf) { ErrorInfo.SetActive(true); }
+                        ErrorDirList.Add(dat);
+                    }
+                //여기까지
                 go.transform.SetParent(listButton.transform.parent);
                 go.transform.localScale = new Vector3(1, 1, 1); // 해상도에 따른 조정
                 buttons.Add(go);
