@@ -41,7 +41,7 @@ namespace TempestWave.SelectScreen
         private List<BeatmapInfo>[] CurrentQueue = new List<BeatmapInfo>[4];
         private BeatmapInfo[] CurrentBeatmaps;
 
-        public List<GameObject> buttons = new List<GameObject>();
+        private List<GameObject> buttons = new List<GameObject>();
         public GameObject listButton, listCore, TitlePanel, PeoplePanel, ModePanel, DensityPanel, OptionPanel, StartPanel, BeatmapIndexPanel, ErrorInfo;
         public GridLayoutGroup grid;
         public Text titleText, artistText, authorText, fileIndexText, densityText, errorText, searchTexts, scrollAmpText, densityMainText, densitySubText;
@@ -60,7 +60,6 @@ namespace TempestWave.SelectScreen
         public SceneChanger changer;
         public Animator animationObj, OptionAnim;
         public LevelText levText;
-        public int CurrentButton;
 
         // Use this for initialization
         void Start()
@@ -102,8 +101,6 @@ namespace TempestWave.SelectScreen
                 }
                 buttons.Clear();
             }
-            CurrentButton = -1;
-
             DirectoryInfo source = new DirectoryInfo(GamePath.SongPath());
             DirectoryInfo[] dir = source.GetDirectories();
             if (dir.Length.Equals(0))
@@ -120,20 +117,21 @@ namespace TempestWave.SelectScreen
             list.Sort();
 
             int chk; // 악곡 데이터가 정상적으로 입력되었는지를 알려주는 값.
-            int idx = 0;
             foreach (string dat in list)
             {
                 GameObject go = Instantiate(listButton) as GameObject;
                 go.SetActive(true);
                 SongButton realBtn = go.GetComponent<SongButton>();
-                realBtn.Index = idx++;
-                chk = realBtn.SetSong(dat, source.FullName + dat, value);
+                chk = realBtn.SetSongName(dat, source.FullName + dat, value);
+                //chk = realBtn.SetSong(dat, source.FullName + dat, value);                // 이거를 버튼 눌렀을 때로도 뺀다.
+
                 if (chk.Equals(1)) { go.SetActive(false); continue; }
-                else if (chk.Equals(-1))
-                {
-                    if (!ErrorInfo.activeSelf) { ErrorInfo.SetActive(true); }
-                    ErrorDirList.Add(dat);
-                }
+                    else if (chk.Equals(-1))
+                    {
+                        if (!ErrorInfo.activeSelf) { ErrorInfo.SetActive(true); }
+                        ErrorDirList.Add(dat);
+                    }
+                //여기까지
                 go.transform.SetParent(listButton.transform.parent);
                 go.transform.localScale = new Vector3(1, 1, 1); // 해상도에 따른 조정
                 buttons.Add(go);

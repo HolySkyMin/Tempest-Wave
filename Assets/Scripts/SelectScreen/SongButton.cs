@@ -5,7 +5,6 @@ using System.Text;
 using System.Collections.Generic;
 using System;
 using LitJson;
-using TempestWave.Core.UI;
 
 namespace TempestWave.SelectScreen
 {
@@ -21,14 +20,32 @@ namespace TempestWave.SelectScreen
         private List<string> Tag = new List<string>();
         private int bgaframe = 0;
         private string wavPath = "", mp3Path = "", oggPath = "", bgaPath = "", jacketPath = "", backPath = "";
-        public int Index;
         public Text buttonText;
         public Button startButton;
         public SongSelector selector;
         public TagManager tagmanager;
 
+
+        public bool loaded { get; private set; }
+
+        string _title;
+        string _path;
+        string _searchKey;
+
+        public int SetSongName(string title, string path, string searchKey)
+        {
+            _title = title;
+            _path = path;
+            _searchKey = searchKey;
+            if (searchKey != "" && !title.Substring(0, searchKey.Length > title.Length ? title.Length : searchKey.Length).ToUpper().Equals(searchKey.ToUpper())) { return 1; }
+            buttonText.text = title;
+            loaded = false;
+            return 0;
+        }
+
         public int SetSong(string title, string path, string searchKey)
         {
+            loaded = true;
             if (searchKey != "" && !title.Substring(0, searchKey.Length > title.Length ? title.Length : searchKey.Length).ToUpper().Equals(searchKey.ToUpper())) { return 1; }
             buttonText.text = title;
 
@@ -287,14 +304,8 @@ namespace TempestWave.SelectScreen
 
         public void Click()
         {
-            gameObject.GetComponent<Image>().color = GlobalTheme.ThemeContrastColor();
-            gameObject.GetComponentInChildren<Text>().color = GlobalTheme.ThemeColor();
-            if(selector.CurrentButton >= 0)
-            {
-                selector.buttons[selector.CurrentButton].GetComponent<Image>().color = GlobalTheme.ThemeColor();
-                selector.buttons[selector.CurrentButton].GetComponentInChildren<Text>().color = GlobalTheme.ThemeContrastColor();
-            }
-            selector.CurrentButton = Index;
+            if (!loaded)
+                SetSong(_title, _path, _searchKey);
             selector.Selected(buttonText.text, Starlight5, Theater2, Theater4, Theater6, Platinum1, Filled, bgaframe, bgaPath, backPath);
             selector.LoadJacket(jacketPath);
         }
