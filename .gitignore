@@ -1,5 +1,7 @@
 [Ll]ibrary/
 [Ll]ogs/
+[Bb]uilds/
+[Bb]uild/
 [Tt]emp/
 [Oo]bj/
 Assets/AssetStoreTools*
@@ -44,4 +46,4 @@ sysinfo.txt
 
 # Custom Setting
 [Dd]ocuments/
-.collabignore
+*.collabignore
