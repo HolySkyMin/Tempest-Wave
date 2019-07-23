@@ -44,3 +44,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Custom Setting
+[Dd]ocuments/
+.collabignore
