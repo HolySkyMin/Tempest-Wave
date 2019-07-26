@@ -13,13 +13,13 @@ namespace TempestWave.Core.UI
             float width, height, safeWidth, safeHeight;
             if (Screen.width / (float)Screen.height < 16f / 9f)
             {
-                width = 1280 * (Screen.height / Screen.width);
-                height = 1280;
+                width = 1280;
+                height = 1280 * (Screen.height / Screen.width);
             }
             else
             {
-                width = 720;
-                height = 720 * (Screen.width / Screen.height);
+                width = 720 * (Screen.width / Screen.height);
+                height = 720;
             }
             safeWidth = width * (Screen.safeArea.width / Screen.width);
             safeHeight = height * (Screen.safeArea.height / Screen.height);
